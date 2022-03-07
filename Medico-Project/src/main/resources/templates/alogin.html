@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css" /> 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      function loginValidate(){
+    var un = document.getElementById('lu');
+    var pw = document.getElementById('lp');
+    var pos = un.value.indexOf("@gmail.com");
+    var len = pw.value.length;
+    if(un.value == "" || pw.value == ""){
+        swal("Login Failed", "Please check all the fields are entered or not","error");
+        un.style.borderColor = "red"; 
+        pw.style.borderColor = "red"; 
+        if(un.value!=""){
+            un.style.borderColor = "green"; 
+        }
+        if(pw.value!=""){
+            pw.style.borderColor = "green"; 
+        }
+    }
+    else if(pos==-1){
+        swal("Email error", "Please enter a valid email which has @gmail.com ","error");
+        un.style.borderColor = "red";
+        pw.style.borderColor = "black";
+    }
+    else if(len<8){
+        swal("Password error", "Please enter a Password which is more than 8 characters","error");
+        un.style.borderColor = "green";
+        pw.style.borderColor = "red";
+    }
+    else if(un.value != "" || pw.value != ""){
+        swal("Login Successfully");
+        un.style.borderColor = "green"; 
+        pw.style.borderColor = "green"; 
+    }
+}
+    </script>
+    <title>Login Page</title>
+</head>
+<body>
+<form action="adminlogin" method="post">
+<center><h3> Admin Login</h3></center>
+  <div class="loginbox">
+    <h3>Registered Email ID :</h3>
+    <input id="lu" type="text" placeholder="Enter Email ID" name="uname"><i class="fas fa-check-circle"></i>
+    <h3>Password</h3>
+    <input id="lp" type="password" placeholder="Enter Password" name="password">
+    <button type="submit" class="loginbut" onclick="loginValidate()">Login</button><br><br>   
+    <p>Don't have an account?<a href="Signup.html"> SignUp here</a></p> 
+  </div>
+  </form>
+</body>
+</html>

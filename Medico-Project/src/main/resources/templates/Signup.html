@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/styles.css" /> 
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    function Submit(){
+    var n = document.getElementById('name');
+    var e = document.getElementById('email');
+    var u = document.getElementById('usern');
+    var p = document.getElementById('pass');
+    var cp = document.getElementById('cpass');
+    var pos = e.value.indexOf("@gmail.com");
+    var c = document.getElementById('check')
+    if(n.value == "" || e.value == "" || u.value == "" || p.value=="" || cp.value == "")
+    {
+        swal("Account Creation Failed", "Please check all the fields are entered or not","error");
+        n.style.borderColor = "red"; 
+        p.style.borderColor = "red"; 
+        e.style.borderColor = "red"; 
+        u.style.borderColor = "red"; 
+        cp.style.borderColor = "red"; 
+        if(n.value!=""){
+            n.style.borderColor = "green"; 
+        }
+        if(e.value!=""){
+            e.style.borderColor = "green"; 
+        }
+        if(u.value!=""){
+            u.style.borderColor = "green"; 
+        }
+        if(p.value!=""){
+            p.style.borderColor = "green"; 
+        }
+        if(cp.value!=""){
+            cp.style.borderColor = "green"; 
+        }
+    }
+    else if(n.value.length < 3){
+        swal("Name error", "Please enter a valid Name which has more than 3 characters","error");
+        n.style.borderColor = "red"; 
+        e.style.borderColor = "black"; 
+        u.style.borderColor = "black"; 
+        p.style.borderColor = "black";
+        cp.style.borderColor = "black";
+    }
+    else if(pos==-1){
+        swal("Email error", "Please enter a valid email  ","error");
+        n.style.borderColor = "green"; 
+        e.style.borderColor = "red"; 
+        u.style.borderColor = "black"; 
+        p.style.borderColor = "black";
+        cp.style.borderColor = "black"; 
+    }
+    else if(u.value.length < 5){
+        swal("Username error", "Please enter a valid Username which has more than 5 characters","error");
+        n.style.borderColor = "green"; 
+        e.style.borderColor = "green"; 
+        u.style.borderColor = "red"; 
+        p.style.borderColor = "black";
+        cp.style.borderColor = "black";
+    }
+    else if(p.value.length < 8){
+        swal("Password error", "Please create a valid Password which has more than 8 characters","error");
+        n.style.borderColor = "green"; 
+        e.style.borderColor = "green"; 
+        u.style.borderColor = "green"; 
+        p.style.borderColor = "red";
+        cp.style.borderColor = "black";
+    }
+    else if(p.value != cp.value){
+        swal("Confirmation Password error ", "Please make sure that you enter the password and confirm password is to be same.","error");
+        n.style.borderColor = "green"; 
+        e.style.borderColor = "green"; 
+        u.style.borderColor = "green"; 
+        p.style.borderColor = "green";
+        cp.style.borderColor = "red";
+    }
+    else if(n.value != "" || p.value != "" || e.value != "" || u.value != "" || cp.value != ""){
+        swal("Account Created Successfully");
+        n.style.borderColor = "green"; 
+        e.style.borderColor = "green"; 
+        u.style.borderColor = "green"; 
+        p.style.borderColor = "green";
+        cp.style.borderColor = "green"; 
+    }
+}</script>
+</head>
+<body>
+<form action="signup" method="post">
+<center><h3>Register</h3></center>
+  <div class="loginbox">
+    <p>Name</p>
+    <input id="name" type="text" name="name">
+    <p>Email</p>
+    <input id="email" type="text" name="email">
+    <p>Username</p>
+    <input id="usern" type="text" name="username">
+    <p>Password</p>
+    <input id="pass" type="password" name="password">
+    <p>Confirm Password</p>
+    <input id="cpass" type="password" name="confirmpassword">
+    <button type="submit" class="signbut" onclick="Submit()">Signin Now</button>
+    <p></p>
+    <p>Already have an account<a href="Login.html">Login here</a></p>
+  </div>
+  </form>
+</body>
+</html>
